@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}Register{% endblock %}
+{% block body %}
+
+    <div class="container1">
+        <h1><center>Zarejestruj się</center></h1>
+        <div class="row">
+            <div class="col-8 mx-auto mt-5">
+                <center>
+                    {{ form_start(form,{'attr':{'class':'form-material m-t-40'}}) }}
+                    {{ form_end(form) }}
+                </center>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

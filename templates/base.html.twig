@@ -1,12 +1,66 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="pl">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="This site is very comfortable option for all teachers and students to do some tests">
+    <meta name="author" content="Bartłomiej Szyszkowski">
+
+    <title>Sprzawdzianator</title>
+
+    <link rel="icon" href="{{ asset('assets/img/sprawdzianator-banner.png') }}">
+    <link href="{{ asset('assets/css/base.css')}}" rel="stylesheet">
+
+</head>
+
+<body>
+{#<img alt="Banner" src="{{ asset('assets/img/sprawdzianator-banner.png') }}"/>#}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top {{ app.session.flashBag.peek('error')|length > 0 ? '' : 'mb-5' }}">
+    <div class="container">
+        <a class="navbar-brand" href="{{ path('homepage') }}">SPRAWDZIANATOR - łatwe i wygodne sprawdziany</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ path("student_add") }}">NA SZYBKO: Zadania</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">O projekcie</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#">Autor</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+</body>
+
+<main>
+    {% for message in app.flashes('success')%}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {% for message in app.flashes('error')%}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {% block body %}
+
+    {% endblock %}
+</main>
+
+<script src="{{ asset('assets/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+
 </html>
+

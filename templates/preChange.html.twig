@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Zmiana hasła - email{% endblock %}
+
+{% block body %}
+
+    <div class="container1">
+        <h1><center>Jeśli planujesz zmianę hasła, podaj adres email powiązany z twoim kontem na naszym portalu.</center></h1>
+        <div class="row">
+            <div class="col-8 mx-auto mt-5">
+                <center>
+                    {{ form_start(form,{'attr':{'class':'form-material m-t-40'}}) }}
+                    {{ form_end(form) }}
+                </center>
+            </div>
+        </div>
+    </div>
+{% endblock %}

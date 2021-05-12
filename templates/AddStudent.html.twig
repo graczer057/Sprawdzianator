@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% set falshesbag = app.flashes %}
+{% block body %}
+
+    {% if flashesbag.success is defined %}
+        <div class="col-8 mx-auto bg-success border border-dark shadow rounded">
+            <p>{{ flashesbag.notice[0] }}</p>
+        </div>
+    {% endif %}
+
+    <div class="container1">
+        <h1><center>Podaj swoje dane</center></h1>
+        <div class="row">
+            <div class="col-8 mx-auto mt-5">
+                {{ form_start(form,{'attr':{'class':'form-material m-t-40'}}) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
