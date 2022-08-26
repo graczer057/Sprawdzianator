@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% set falshesbag = app.flashes %}
+{% block body %}
+
+    {% if flashesbag.success is defined %}
+        <div class="col-8 mx-auto bg-success border border-dark shadow rounded">
+            <p>{{ flashesbag.notice[0] }}</p>
+        </div>
+    {% endif %}
+
+    <div class="container1">
+        <center>Cześć {{ app.User.name }}!</center>
+    </div>
+
+    {#{% if !test %}
+        <div class="container1">
+            Ekstra, nie masz żadnej pracy zaliczeniowej/testu do zrobienia ;)
+        </div>
+    {% else %}
+        <div class="container1">
+            Piwko ze znajomymi musi poczekać, masz zadanie do zrobienia ;(
+        </div>
+    {% endif %}#}
+
+{% endblock %}

@@ -1,13 +1,64 @@
 {% extends 'base.html.twig' %}
-{% block body %}
+{% block main %}
     {% if not app.user %}
 
-        <center>
-            <div class="container1">
-                <a class="button" href="{{ path('app_login') }}">Zaloguj się</a>
-                <a class="button" href="{{ path('app_register') }}">Zarejestruj się</a>
+        <header class="bg-primary bg-gradient text-white">
+            <div class="container px-4 text-center">
+                <h1 class="fw-bolder">Witamy w sprawdzianatorze - gdzie sprawdziany to przyjemność</h1>
+                <p class="lead">Miejsce do łatwej organizacji i sprawdzenia sprawdzianów</p>
+                <a class="btn btn-lg btn-light" href="#about">Dowiedz się więcej</a>
             </div>
-        </center>
+        </header>
+        <section id="about">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2>Kilka słów o projekcie</h2>
+                        <p class="lead">Strona została utworzona z myślą o nauczycielach i uczniach. Nauka zdalna nie była i nie jest łatwym miejscem do sprawdzenia wiedzy. Dlatego sprawdzianator przychodzi z pomocą.</p>
+                        <ul>
+                            <li>Pomoc w organizacji pracy nauczycieli:</li>
+                            <ul>
+                                <li>Na sprawdzianach łatwo oszukiwać. U nas ograniczamy to ryzyko do minimum.</li>
+                                <li>Sami Państwo decydujecie jakie zadania, w jakich grupach i przedziałach ocen zostaną wylosowane zmagającym się uczniom.</li>
+                                <li>Ciężkie sprawdzanie wszystkich kanałów komunikacyjnych w celu zweryfikowania "zdalnego sprawdzianu"? W tym miejscu uczniowie przesyłają swoje odpowiedzi i dostają Państwo jeden plik pdf ze wszystkim odpowiedziami!</li>
+                            </ul>
+                            <li>Szybkie zaliczenia i poprawki dla uczniów:</li>
+                            <ul>
+                                <li>Pewnie nie raz zdarzało się Tobie poszukiwania sprawdzianów i linków na różnych komunikatorach?</li>
+                                <li>Na szczęście o to tutaj nie trzeba się martwić, wszystkie sprawdziany i poprawki masz w jednym miejscu.</li>
+                                <li>Zdarza się Tobie zapomnieć o zaliczeniu? Spokojnie na swoim profilu możesz edytować ile powiadomień i kiedy mamy Tobie wysyłać.</li>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bg-light" id="register">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2>Rejestracja</h2>
+                        <p class="lead">Rejestracja dotyczy TYLKO nauczycieli lub dyrektorów szkół. Rejestracja uczniów odbywa się za pomocą linków zapraszających przez nauczyciela. Jeśli jesteś uczniem i myślisz, że ta strona może zaciekawić twojego nauczyciela? Śmiało pokaż mu i może wasza szkoła/klasa zacznie korzystać ze sprawdzianatora. </p>
+                        <div class="container px-4 text-center">
+                            <a class="btn btn-lg btn-light" style="background-color: #5b83bd; border-radius: 25px;" href="#about">Zarejestruj swoją placówkę już dziś!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="login">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2>Logowanie</h2>
+                        <p class="lead">Masz już konto na naszym portalu? To świetnie! Zaloguj się, żeby zacząć tworzyć/rozwiązywać sprawdziany!</p>
+                        <div class="container px-4 text-center">
+                            <a class="btn btn-lg btn-light" style="background-color: #5b83bd; border-radius: 25px;" href="#about">Zaloguj się!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     {% endif %}
 {% endblock %}

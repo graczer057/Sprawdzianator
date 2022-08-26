@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
@@ -98,7 +97,7 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator implements Passw
         if(($user->getRoles() == ['ROLE_TEACHER'])){
             return new RedirectResponse($this->urlGenerator->generate('#'));
         } elseif ($user->getRoles() == ['ROLE_STUDENT']){
-            return new RedirectResponse($this->urlGenerator->generate('test'));
+            return new RedirectResponse($this->urlGenerator->generate('studentHomepage'));
         }
     }
 

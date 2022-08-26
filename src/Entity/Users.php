@@ -156,20 +156,18 @@ class Users implements UserInterface
         return $this;
     }
 
-    /**
-     * @see UserInterface
-     */
     public function getRoles()
     {
-        $roles = $this->roles;
+        $role = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_STUDENT';
+
+        return array_unique($roles);
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function getPassword()
+    public function getPassword(): ?string
     {
-        return (string) $this->password;
+        return $this->password;
     }
 
     /**

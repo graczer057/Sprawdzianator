@@ -37,7 +37,7 @@ class homepageController extends AbstractController
     }
 
     /**
-     * @Route("/", name="homepage")
+     * @Route("", name="homepage")
      */
     public function homepage()
     {
@@ -55,7 +55,7 @@ class homepageController extends AbstractController
         if (($form->isSubmitted()) && ($form->isValid())) {
             $formData = $form->getData();
 
-            $surname = $this->usersRepository->findOneBy(['Surname' => $formData['surname'], 'Name' => $formData['name']]);
+            $surname = $this->usersRepository->findOneBy(['surname' => $formData['surname'], 'name' => $formData['name']]);
 
             if(!$surname){
                 switch($formData['grade']){
@@ -86,14 +86,16 @@ class homepageController extends AbstractController
                     //$object
                 //);
 
+
+
                 //$this->entityManager->persist($newUser);
                 $this->entityManager->flush();
 
                 //$users = $this->usersRepository->find($newUser);
 
                 return $this->redirectToRoute('test', [
-                    //'users' => $users,
-                    //'token' => $users->getToken()
+                    'users' => $surname,
+                    'token' => $surname->getToken()
                 ]);
             }
         }else{
