@@ -61,6 +61,11 @@ class Users implements UserInterface
      */
     private $isActiveUser;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $completed;
+
     /*
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -87,6 +92,7 @@ class Users implements UserInterface
         $this->isActiveUser = 0;
         $this->token = md5(uniqid());
         $this->tokenExpire = new \DateTime("now + 60 minutes");
+        $this->completed = 0;
     }
 
     public function activation(){
@@ -115,6 +121,9 @@ class Users implements UserInterface
         $this->isActiveUser = 1;
     }
 
+    /**
+     * @see UserInterface
+     */
     public function getId(): ?int
     {
         return $this->id;
@@ -160,7 +169,7 @@ class Users implements UserInterface
     {
         $role = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_STUDENT';
+        $roles[] = $role;
 
         return array_unique($roles);
     }
@@ -255,5 +264,23 @@ class Users implements UserInterface
     public function setIsActiveUser(int $isActiveUser): void
     {
         $this->isActiveUser = $isActiveUser;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCompleted()
+    {
+        return $this->completed;
+    }
+
+    /**
+     * @param mixed $completed
+     */
+    public function setCompleted(bool $completed): self
+    {
+        $this->completed = $completed;
+
+        return $this;
     }
 }

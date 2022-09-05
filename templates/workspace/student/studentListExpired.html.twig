@@ -1,0 +1,48 @@
+{% extends 'workspace/workspaceBase.html.twig' %}
+
+{% block listAll %}
+    href="{{ path('student_list_all_exams', {'organisation': organisation, 'classToken': classToken}) }}"
+{% endblock %}
+
+{% block listActive %}
+    href="{{ path('student_list_active_exams', {'organisation': organisation, 'classToken': classToken}) }}"
+{% endblock %}
+
+{% block listSolved %}
+    href="{{ path('student_list_solved_exams', {'organisation': organisation, 'classToken': classToken}) }}"
+{% endblock %}
+
+{% block listUnsolved %}
+    href="{{ path('student_list_unsolved_exams', {'organisation': organisation, 'classToken': classToken}) }}"
+{% endblock %}
+
+{% block listExpired %}
+    href="{{ path('student_list_expired_exams', {'organisation': organisation, 'classToken': classToken}) }}"
+{% endblock %}
+
+{% block main %}
+    <div class="col-12 my-5">
+        <h3>Wygasłe sprawdziany</h3>
+    </div>
+
+    {% set index = 1 %}
+    {% for exam in expiredExams %}
+        <div class="col-5 mx-auto bg-light border border-dark shadow my-3 p-2">
+            <div class="d-inline-block">
+                <strong>Id: {{ exam.id }}</strong>
+                <p><strong>Tytuł sprawdzianu: </strong>{{ exam.title }}</p>
+                <p><strong>Przedmiot szkolny: </strong>{{ exam.subject }}</p>
+                <p> <strong>Nauczyciel zapowiadający: </strong> {{ exam.teacher.user.name }} {{ exam.teacher.user.surname }}</p>
+                <p><strong>Szkoła w której odbywa się sprawdzian: </strong> {{ exam.organisation.name }} </p>
+                <p><strong>Sprawdzian dla klasy: </strong>{{ exam.class.name }}</p>
+                <p><strong>Czy sprawdzian jest aktywny: </strong>{% if exam.isActive == 0 %}nie{% else %}tak{% endif %}</p>
+                <p><strong>Data utworzenia sprawdzianu: </strong>{{ exam.createDate|date('H:i d.m.Y') }}</p>
+                <p><strong>Data zakończenia sprawdzianu: </strong>{{ exam.activeDate|date('H:i d.m.Y') }}</p>
+                <div class="d-inline-block float-right">
+                    <a class="btn btn-outline-success my-2" href=""><i class="fa fa-table"></i></a>
+                </div>
+            </div>
+        </div>
+        {% set index = index + 1 %}
+    {% endfor %}
+{% endblock %}

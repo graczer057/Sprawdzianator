@@ -1,0 +1,20 @@
+{% extends 'landing/base.html.twig' %}
+{% block title %}Zarejestruj się{% endblock %}
+{% block main %}
+
+    <section id="register">
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                    <h2>Rejestracja</h2>
+                    <p class="lead">Drogi uczniu, zostałeś zaproszony przez swojego nauczyciela/dyrektora do dołączenia do klasy na naszym portalu. Pierwszym krokiem założenie konta w tym miejscu.</p>
+                    <div class="col-8 mx-auto mt-5">
+                        {{ form_start(form,{'attr':{'class':'form-material m-t-40'}}) }}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

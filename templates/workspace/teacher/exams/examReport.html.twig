@@ -1,0 +1,82 @@
+{% extends 'workspace/workspaceBase.html.twig' %}
+
+{% block addClass %}
+    href="{{ path('teacher_add_class', {'organisation': organisation }) }}"
+{% endblock %}
+
+{% block listClass %}
+    href="{{ path('teacher_list_classes', {'organisation': organisation}) }}"
+{% endblock %}
+
+{% block addExam %}
+    href="{{ path('teacher_create_exam', {'organisation': organisation}) }}"
+{% endblock %}
+
+{% block listExam %}
+    href="{{ path('teacher_list_exams', {'organisation': organisation}) }}"
+{% endblock %}
+
+{% block main %}
+    <div class="col-12 my-5">
+        <h3>Osoby, które rozwiązały sprawdzian: </h3>
+    </div>
+
+    {% set index = 1 %}
+    {% for do in done %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 class="mt-5">Imię i nazwisko: {{ do.student.user.name }} {{ do.student.user.surname }}</h1>
+                    <p><strong>Ocena o którą uczeń się dobiegał: </strong>{{ do.exercises.grade }}</p>
+                    <p><strong>Grupa zadaniowa: </strong>{{ do.exercises.exerciseGroup }}</p>
+                    <p><strong>Zadania przydzielone: </strong>{{ do.exercises.excersises }}</p>
+                </div>
+            </div>
+        </div>
+
+        {% set index1 = 1 %}
+        {% for pic in pics %}
+            <img src="{{ asset('assets/uploads/' ~ pic.picture) }}" alt="praca: {{ do.student.user.name }} {{ do.student.user.surname }}" height="300px" width="800px">
+            {% set index1 = index1 + 1 %}
+        {% endfor %}
+
+        {% set index = index + 1 %}
+    {% endfor %}
+
+    <div class="col-12 my-5">
+        <h3>Osoby, które w ogóle się nie podjęły rozwiązania sprawdzianu: </h3>
+    </div>
+
+    {% set index = 1 %}
+    {% for notT in notTaken %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 class="mt-5">Imię i nazwisko: {{ notT.name }} {{ notT.surname }}</h1>
+                </div>
+            </div>
+        </div>
+        {% set index = index + 1 %}
+    {% endfor %}
+
+    <div class="col-12 my-5">
+        <h3>Osoby, które nie rozwiązały sprawdzianu</h3>
+    </div>
+
+    {% set index = 1 %}
+    {% for notD in notDone %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 class="mt-5">Imię i nazwisko: {{ notD.student.user.name }} {{ notD.student.user.surname }}</h1>
+                    <p><strong>Ocena o którą uczeń się dobiegał: </strong>{{ notD.exercises.grade }}</p>
+                    <p><strong>Grupa zadaniowa: </strong>{{ notD.exercises.exerciseGroup }}</p>
+                    <p><strong>Zadania przydzielone: </strong>{{ notD.exercises.excersises }}</p>
+                </div>
+            </div>
+        </div>
+        {% set index = index + 1 %}
+    {% endfor %}
+
+
+{% endblock %}

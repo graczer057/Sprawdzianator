@@ -94,11 +94,14 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator implements Passw
         }
 
         $user = $token->getUser();
-        if(($user->getRoles() == ['ROLE_TEACHER'])){
-            return new RedirectResponse($this->urlGenerator->generate('#'));
-        } elseif ($user->getRoles() == ['ROLE_STUDENT']){
-            return new RedirectResponse($this->urlGenerator->generate('studentHomepage'));
+        if($user->getRoles() == ['ROLE_DIRECTOR']){
+            return new RedirectResponse($this->urlGenerator->generate('director_complete'));
+        } elseif ($user->getRoles() == ['ROLE_TEACHER']){
+            return new RedirectResponse($this->urlGenerator->generate('teacher_choose'));
+        } elseif ($user->getRoles() == ["ROLE_STUDENT"]) {
+            return new RedirectResponse($this->urlGenerator->generate('student_complete'));
         }
+        return new RedirectResponse($this->urlGenerator->generate('register'));
     }
 
     protected function getLoginUrl()

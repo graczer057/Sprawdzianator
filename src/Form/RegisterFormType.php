@@ -3,13 +3,11 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -75,21 +73,9 @@ class RegisterFormType extends AbstractType
                 ],
                 'label' => 'Twoja rola w szkole* ',
                 'choices' => [
-                    'Nauczyciel' => 'ROLE_TEACHER',
-                    'Uczeń' => 'ROLE_STUDENT'
+                    'Dyrektor' => 'ROLE_DIRECTOR',
+                    'Nauczyciel' => 'ROLE_TEACHER'
                 ]
-            ])
-            ->add('agreeTerms', CheckboxType::class, [
-                'attr' => [
-                    'class' => 'form-control'
-                ],
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'Akceptacja regulaminu jest obowiązkowa do założenia konta w naszym serwisie.',
-                    ]),
-                ],
-                'label' => 'Akceptacja regulaminu (link wkrótce)* ',
             ])
             ->add('btn_submit', SubmitType::class, [
                 'attr' => [

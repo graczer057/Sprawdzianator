@@ -1,0 +1,25 @@
+{% extends 'workspace/workspaceBase.html.twig' %}
+
+{% block listAll %}
+    href="{{ path('student_list_all_exams', {'organisation': organisation, 'classToken': classToken}) }}"
+{% endblock %}
+
+{% block listActive %}
+    href="{{ path('student_list_active_exams', {'organisation': organisation, 'classToken': classToken}) }}"
+{% endblock %}
+
+{% block listSolved %}
+    href="{{ path('student_list_solved_exams', {'organisation': organisation, 'classToken': classToken}) }}"
+{% endblock %}
+
+{% block listUnsolved %}
+    href="{{ path('student_list_unsolved_exams', {'organisation': organisation, 'classToken': classToken}) }}"
+{% endblock %}
+
+{% block listExpired %}
+    href="{{ path('student_list_expired_exams', {'organisation': organisation, 'classToken': classToken}) }}"
+{% endblock %}
+
+{% block main %}
+    <p>Witaj uczniu</p>
+{% endblock %}

@@ -25,6 +25,7 @@ security:
 
     access_control:
         - { path: '/admin', roles: ROLE_ADMIN }
+        - { path: '/director', roles: ROLE_DIRECTOR}
         - { path: '/teacher', roles: ROLE_TEACHER }
         - { path: '/student', roles: ROLE_STUDENT }
-        - { path: '/homepage', roles: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: '/homepage', roles: IS_AUTHENTICATED_ANONYMOUSLY }

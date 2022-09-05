@@ -1,0 +1,30 @@
+{% extends 'landing/base.html.twig' %}
+
+{% block main %}
+    <section class="bg-light" id="register">
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                    <h2>Bez organizacji</h2>
+                    <p class="lead">Nauczyciele powinni mieć wybór. Dlatego też drogi użytkowniku mamy dla Ciebie dwie opcje korzystania z portalu. Pierwsza opcja jest korzystanie z serwisu bez podpiętej organizacji. W tej opcji można tylko zakładać klasy, dodawać uczniów oraz tworzyć i sprawdzać sprawdziany. Tracisz wszystkie benefity związane z pracą w serwisie w ramach organizacji.</p>
+                    <div class="container px-4 text-center">
+                        <a class="btn btn-lg btn-light" style="background-color: #5b83bd; border-radius: 25px;" href="{{ path('landing_demo_teacher') }}">Zacznij korzystać z serwisu.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="login">
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                    <h2>Z organizacją</h2>
+                    <p class="lead">Jeśli należysz do danej organizacji i chcesz podłączyć swoje konto do konta organizacji w serwisie przejdź dalej. Będąc podpiętym do organizacji zyskujesz benefity takie jak kalendarz, wspólne klasy i wiele więcej.</p>
+                    <div class="container px-4 text-center">
+                        <a class="btn btn-lg btn-light" style="background-color: #5b83bd; border-radius: 25px;" href="{{ path('teacher_find') }}">Znajdź swoją organizację już dziś!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

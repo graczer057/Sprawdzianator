@@ -20,97 +20,87 @@ class Excersises
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
-    private $Grade;
+    private $grade;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Excersises;
+    private $excersises;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $Group;
+    private $exerciseGroup;
 
     /**
-     * @ORM\OneToMany(targetEntity=Users::class, mappedBy="Excersises")
+     * @ORM\ManyToOne(targetEntity=Exams::class)
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $Users;
+    private $exam;
 
-    public function __construct()
-    {
-        $this->Users = new ArrayCollection();
+    public function __construct(
+        int $grade,
+        string $excersises,
+        int $exerciseGroup,
+        Exams $exam
+    ){
+        $this->grade = $grade;
+        $this->excersises = $excersises;
+        $this->exerciseGroup = $exerciseGroup;
+        $this->exam = $exam;
     }
 
-    public function getId(int $id): ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     public function getGrade(): ?int
     {
-        return $this->Grade;
+        return $this->grade;
     }
 
-    public function setGrade(int $Grade): self
+    public function setGrade(int $grade): self
     {
-        $this->Grade = $Grade;
+        $this->grade = $grade;
 
         return $this;
     }
 
     public function getExcersises(): ?string
     {
-        return $this->Excersises;
+        return $this->excersises;
     }
 
-    public function setExcersises(string $Excersises): self
+    public function setExcersises(string $excersises): self
     {
-        $this->Excersises = $Excersises;
+        $this->excersises = $excersises;
 
         return $this;
     }
 
-    public function getGroup(): ?int
+    public function getExam(): ?Exams
     {
-        return $this->Group;
+        return $this->exam;
     }
 
-    public function setGroup(int $Group): self
+    public function setExam(?Exams $exam): self
     {
-        $this->Grade = $Group;
+        $this->exam = $exam;
 
         return $this;
     }
 
-    /**
-     * @return Collection|Users[]
-     */
-    public function getUsers(): Collection
+    public function getExerciseGroup(): ?int
     {
-        return $this->Users;
+        return $this->exerciseGroup;
     }
 
-    public function addUser(Users $user): self
+    public function setExerciseGroup(int $exerciseGroup): self
     {
-        if (!$this->Users->contains($user)) {
-            $this->Users[] = $user;
-            $user->setExcersises($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(Users $user): self
-    {
-        if ($this->Users->removeElement($user)) {
-            // set the owning side to null (unless already changed)
-            if ($user->getExcersises() === $this) {
-                $user->setExcersises(null);
-            }
-        }
+        $this->exerciseGroup = $exerciseGroup;
 
         return $this;
     }

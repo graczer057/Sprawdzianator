@@ -1,0 +1,20 @@
+{% extends '../landing/base.html.twig' %}
+
+{% block title %}Dezaktywowany link{% endblock %}
+
+{% block main %}
+    <section id="register">
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                    <h2>Ponowna weryfikacja konta</h2>
+                    <p class="lead">Twój link aktywacyjny wygasł. Proszę podać adres email powiązany z kontem, które próbujesz aktywować.</p>
+                    <div class="col-8 mx-auto mt-5">
+                        {{ form_start(form,{'attr':{'class':'form-material m-t-40'}}) }}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'landing/base.html.twig' %}
+{% block title %}Zarejestruj się{% endblock %}
+{% block main %}
+
+    <section id="register">
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                    <h2>Rejestracja</h2>
+                    <p class="lead">Strona została utworzona z myślą o nauczycielach i uczniach. Nauka zdalna nie była i nie jest łatwym miejscem do sprawdzenia wiedzy. Dlatego sprawdzianator przychodzi z pomocą.</p>
+                    <div class="col-8 mx-auto mt-5">
+                        {{ form_start(form,{'attr':{'class':'form-material m-t-40'}}) }}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

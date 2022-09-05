@@ -1,0 +1,48 @@
+{% extends 'workspace/workspaceBase.html.twig' %}
+{% block addClass %}
+    href="{{ path('teacher_add_class', {'organisation': organisation }) }}"
+{% endblock %}
+
+{% block listAll %}
+    href="{{ path('student_list_all_exams', {'organisation': organisation, 'classToken': classToken}) }}"
+{% endblock %}
+
+{% block listActive %}
+    href="{{ path('student_list_active_exams', {'organisation': organisation, 'classToken': classToken}) }}"
+{% endblock %}
+
+{% block listSolved %}
+    href="{{ path('student_list_solved_exams', {'organisation': organisation, 'classToken': classToken}) }}"
+{% endblock %}
+
+{% block listUnsolved %}
+    href="{{ path('student_list_unsolved_exams', {'organisation': organisation, 'classToken': classToken}) }}"
+{% endblock %}
+
+{% block listExpired %}
+    href="{{ path('student_list_expired_exams', {'organisation': organisation, 'classToken': classToken}) }}"
+{% endblock %}
+
+{% block main %}
+
+    <section id="register">
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                    <h2>Dodaj swoje rozwiązania</h2>
+                    <p class="lead">Startujesz na ocenę: {{ exercises.grade }}</p>
+                    <ul class="list-unstyled">
+                        <li>Oto twoje zadania: </li>
+                        <li>{{ exercises.excersises }}</li>
+                    </ul>
+                    <p class="lead">W celu zaliczenia sprawdzianu musisz przesłać zdjęcie/a swojego zeszytu z rozwiązaniami</p>
+                    <div class="col-8 mx-auto mt-5">
+                        {{ form_start(form,{'attr':{'class':'form-material m-t-40'}}) }}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

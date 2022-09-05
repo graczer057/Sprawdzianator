@@ -1,0 +1,25 @@
+{% extends 'workspace/workspaceBase.html.twig' %}
+
+{% block addClass %}
+    href="{{ path('teacher_add_class', {'organisation': organisation }) }}"
+{% endblock %}
+
+{% block listClass %}
+    href="{{ path('teacher_list_classes', {'organisation': organisation}) }}"
+{% endblock %}
+
+{% block addExam %}
+    href="{{ path('teacher_create_exam', {'organisation': organisation}) }}"
+{% endblock %}
+
+{% block listExam %}
+    href="{{ path('teacher_list_exams', {'organisation': organisation}) }}"
+{% endblock %}
+
+{% block checkExam %}
+
+{% endblock %}
+
+{% block main %}
+    <p>nauczyciel</p>
+{% endblock %}

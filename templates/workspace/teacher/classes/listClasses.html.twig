@@ -1,0 +1,43 @@
+{% extends 'workspace/workspaceBase.html.twig' %}
+
+{% block addClass %}
+    href="{{ path('teacher_add_class', {'organisation': organisation }) }}"
+{% endblock %}
+
+{% block listClass %}
+    href="{{ path('teacher_list_classes', {'organisation': organisation}) }}"
+{% endblock %}
+
+{% block addExam %}
+    href="{{ path('teacher_create_exam', {'organisation': organisation}) }}"
+{% endblock %}
+
+{% block listExam %}
+    href="{{ path('teacher_list_exams', {'organisation': organisation}) }}"
+{% endblock %}
+
+{% block main %}
+
+    {% set index = 1 %}
+    {% for class in classes %}
+
+    <div class="col-5 mx-auto bg-light border border-dark shadow my-3 p-2">
+        <div class="d-inline-block">
+            <strong>Id: {{ class.id }}</strong>
+            <p> <strong>Nazwa Organizacji:</strong> {{ class.organsiation.name }} </p>
+            <p><strong>Nazwa klasy: </strong> {{ class.name }} </p>
+            <p><strong>Link zapraszający uczniów: </strong>{{ class.link }}</p>
+        </div>
+        <div class="d-inline-block float-right">
+
+            <a class="btn btn-outline-primary my-2" href="{{ path('teacher_edit_class', {'organisation': organisation, 'classId': class.id}) }}"><i class="far fa-edit"></i></a>
+
+            <form  method="post" action="{{ path('teacher_delete_class', {'organisation': organisation, 'classId': class.id}) }}">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit" class="btn btn-outline-danger w-100" title="Usuń zadanie" onclick="confirm('Na pewno chcesz usunąc?')"><i class="fas fa-times"></i></button>
+            </form>
+        </div>
+    </div>
+    {% set index = index + 1 %}
+    {% endfor %}
+{% endblock %}
